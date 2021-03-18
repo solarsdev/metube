@@ -7,7 +7,15 @@ header.header
       input(type="text", name="search_query", placeholder="検索")
   .header__column 
     ul 
-      li 
-        a(href=routes.join) Join 
-      li 
-        a(href=routes.login) Login
+      if !user.isAuthenticated
+        li 
+          a(href=routes.join) Join 
+        li 
+          a(href=routes.login) Login
+      else
+        li 
+          a(href=`${routes.videos}${routes.videoUpload}`) Upload
+        li 
+          a(href=routes.userDetail(user.id)) Profile
+        li 
+          a(href=routes.logout) Logout 

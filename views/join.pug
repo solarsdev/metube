@@ -35,11 +35,11 @@ block content
         span メールアドレスで新規登録
       form.email-join__form(action=routes.join, method="post") 
         .email-join__name
-          input.email-join__last-name(type="text", name="last-name", placeholder="姓")
-          input.email-join__first-name(type="text", name="first-name", placeholder="名")
+          input.email-join__last-name(type="text", name="lastName", placeholder="姓")
+          input.email-join__first-name(type="text", name="firstName", placeholder="名")
         input.email-join__email(type="email", name="email", placeholder="メールアドレス")
         input.email-join__password(type="password", name="password", placeholder="パスワード")
-        input.email-join__password-confirm(type="password", name="password-confirm", placeholder="パスワード（確認）")
+        input.email-join__password-confirm(type="password", name="passwordConfirm", placeholder="パスワード（確認）")
         span ご登録前に#{siteName}利用規約をお読みください。
         .email-join__agree
           input.email-join__agree#email-join__agree(type="checkbox", name="agree")

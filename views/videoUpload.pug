@@ -1,1 +1,12 @@
-p videoUpload
+extends layouts/main
+
+block content 
+  .video-upload 
+    .video-upload__header 
+      span チャンネルのコンテンツ
+    form.video-upload__form(action=`${routes.videos}${routes.videoUpload}`, method="post")
+      input.video-upload__file(type="file", name="videoFile")
+      input.video-upload__title(type="text", name="title", placeholder="タイトル")
+      textarea.video-upload__desc(name="description", cols="30", rows="10", placeholder="視聴者に向けて動画の内容を照会しましょう")
+      input.video-upload__upload(type="submit", value="動画をアップロード")
+      
