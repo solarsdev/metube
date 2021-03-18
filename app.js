@@ -37,6 +37,8 @@ app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 
+app.set('view engine', 'pug');
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
