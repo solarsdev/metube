@@ -8,8 +8,8 @@ import routes from '../routes';
 
 const userRouter = express.Router();
 
-userRouter.get(routes.userDetail, userDetail);
 userRouter.get(routes.userEditProfile, userEditProfile);
 userRouter.get(routes.userChangePassword, userChangePassword);
+userRouter.get(routes.userDetail, userDetail);
 
 export default userRouter;

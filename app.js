@@ -6,6 +6,7 @@ import moment from 'moment-timezone';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import { localsMiddleware } from './middlewares';
 
 import routes from './routes';
 import globalRouter from './routers/globalRouter';
@@ -26,12 +27,13 @@ const accessLogStream = fs.createWriteStream(
   { flags: 'a' },
 );
 
-app.use(helmet()); // for security (such as xss sql injection etc)
+app.use(helmet({ contentSecurityPolicy: false })); // for security (such as xss sql injection etc)
 app.use(morgan('logFormat', { stream: accessLogStream })); // for logging express connection
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 app.use(cookieParser()); // get cookie info
+app.use(localsMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
