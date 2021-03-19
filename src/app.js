@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import fs from 'fs';
 import path from 'path';
 import express from 'express';
@@ -35,14 +36,11 @@ app.use(bodyParser.json()); // parse application/json
 app.use(cookieParser()); // get cookie info
 app.use(localsMiddleware);
 
+app.set('view engine', 'pug');
+app.use('/uploads', express.static('uploads'));
+
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
-
-app.set('view engine', 'pug');
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 
 export default app;

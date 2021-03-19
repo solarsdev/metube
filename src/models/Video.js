@@ -5,7 +5,7 @@ import mongoose, { isValidObjectId } from 'mongoose';
 // description
 // views
 // createAt
-// creator
+// comments[]
 
 const VideoSchema = new mongoose.Schema({
   fileUrl: {

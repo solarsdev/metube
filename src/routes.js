@@ -15,7 +15,6 @@ const USER_CHANGE_PASSWORD = '/change-password';
 const VIDEOS = '/videos';
 const VIDEO_UPLOAD = '/upload';
 const VIDEO_DETAIL = '/:id';
-const VIDEO_EDIT = '/:id/edit';
 const VIDEO_DELETE = '/:id/delete';
 
 const routes = {
@@ -45,7 +44,6 @@ const routes = {
       return VIDEO_DETAIL;
     }
   },
-  videoEdit: VIDEO_EDIT,
   videoDelete: VIDEO_DELETE,
 };
 
