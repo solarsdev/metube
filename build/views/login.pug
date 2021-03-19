@@ -1,0 +1,37 @@
+extends layouts/main 
+
+block content 
+  .login
+    .login__header
+      h1 ログイン
+    .login__main 
+      .login__social.social-login
+        .social-login__header 
+          span 外部サービスでログイン
+        .social-login__btn.social-login__btn--facebook
+          i.fab.fa-facebook
+          span.social-login__desc.social-login__desc--facebook Facebookでログイン
+        .social-login__btn.social-login__btn--twitter
+          i.fab.fa-twitter
+          span.social-login__desc.social-login__desc--twitter Twitterでログイン
+        .social-login__btn.social-login__btn--google
+          i.fab.fa-google
+          span.social-login__desc.social-login__desc--google Googleでログイン
+        .social-login__footer 
+          span ログイン以外の目的に使われることはありません。
+          span #{siteName}がゲストの同意なしに投稿することはありません。
+      .login__email.email-login
+        .email-login__header
+          span メールアドレスでログイン
+        form.email-login__form(action=routes.login, method="post")
+          input.email-login__email(type="email", name="email", placeholder="メールアドレス")
+          input.email-login__password(type="password", name="password", placeholder="パスワード")
+          .email-login__logged-on
+            input.email-login__logged-on#email-login__logged-on(type="checkbox", name="loggedOn")
+            label(for="email-login__logged-on") ログインしたままにする
+          input.email-login__submit(type="submit", value="ログイン")
+        .email-login__forgot
+          span パスワードを忘れた方はこちら
+    .login__footer 
+      span まだアカウントをお持ちではない方はこちら
+      i.fas.fa-chevron-right

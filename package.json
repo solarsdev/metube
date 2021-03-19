@@ -4,9 +4,12 @@
   "description": "Cloning Youtube with Vanilla and NodeJS",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node init.js --delay 3.5",
+    "dev": "nodemon --exec babel-node src/init.js --delay 3.5",
     "start": "node build/init.js",
-    "build:server": "babel src --out-dir build"
+    "build:server": "babel src --out-dir build --ignore '.scss' --ignore 'static'",
+    "copyAll": "mkdir -p build/logs && touch build/logs/access.log && cp -R src/uploads build && cp -R src/views build",
+    "build": "npm run build:server && npm run copyAll",
+    "prebuild": "rm -rf build"
   },
   "author": "solarsdev",
   "license": "ISC",

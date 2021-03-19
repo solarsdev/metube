@@ -1,0 +1,20 @@
+extends layouts/main
+
+block content 
+  .user-profile
+    .user-profile__header 
+      span ログインや動画のレビュー時に使用する情報になります。
+      i.fas.fa-lock 
+      span のマークがついた項目は非公開です。
+    form.user-profile__form(action=routes.userEditProfile, method="post")
+      span.user-profile__label.user-profile__label--required アカウント名
+      input.user-profile__account-name(type="text", name="account-name", placeholder="アカウント名")
+      span.user-profile__label.user-profile__label--required.user-profile__label--private メールアドレス
+      input.user-profile__email(type="email", name="email", placeholder="メールアドレス")
+      span.user-profile__label.user-profile__label--not-required プロフィール画像
+      input.user-profile__avatar(type="file", name="avatar")
+      span.user-profile__label.user-profile__label--not-required プロフィール
+      textarea.user-profile__profile(name="profile", cols="30", rows="10", placeholder="東京の会社員です。よろしくお願いいたします。")
+      input.user-profile__submit(type="submit", value="保存")
+
+      
