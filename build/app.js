@@ -43,6 +43,12 @@ _morgan["default"].format('logFormat', ':remote-addr [:date[Asia/Tokyo]] ":metho
 
 var app = (0, _express["default"])();
 
+var logDir = _path["default"].join(__dirname, 'logs');
+
+if (!_fs["default"].existsSync(logDir)) {
+  _fs["default"].mkdirSync(logDir);
+}
+
 var accessLogStream = _fs["default"].createWriteStream(_path["default"].join(__dirname, 'logs', 'access.log'), {
   flags: 'a'
 });
