@@ -41,7 +41,9 @@ app.use(cookieParser()); // get cookie info
 app.use(localsMiddleware);
 
 app.set('view engine', 'pug');
-app.use('/uploads', express.static('uploads'));
+app.set('views', path.join(__dirname, 'views'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//app.use('./uploads', express.static('uploads'));
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);

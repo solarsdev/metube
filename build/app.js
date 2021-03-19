@@ -72,7 +72,9 @@ app.use((0, _cookieParser["default"])()); // get cookie info
 
 app.use(_middlewares.localsMiddleware);
 app.set('view engine', 'pug');
-app.use('/uploads', _express["default"]["static"]('uploads'));
+app.set('views', _path["default"].join(__dirname, 'views'));
+app.use('/uploads', _express["default"]["static"](_path["default"].join(__dirname, 'uploads'))); //app.use('./uploads', express.static('uploads'));
+
 app.use(_routes["default"].home, _globalRouter["default"]);
 app.use(_routes["default"].users, _userRouter["default"]);
 app.use(_routes["default"].videos, _videoRouter["default"]);
