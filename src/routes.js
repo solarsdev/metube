@@ -15,6 +15,7 @@ const USER_CHANGE_PASSWORD = '/change-password';
 const VIDEOS = '/videos';
 const VIDEO_UPLOAD = '/upload';
 const VIDEO_DETAIL = '/:id';
+const VIDEO_EDIT = '/:id/edit';
 const VIDEO_DELETE = '/:id/delete';
 
 const routes = {
@@ -28,9 +29,9 @@ const routes = {
   userDetail: (id) => {
     if (id) {
       return `${USERS}/${id}`;
-    } else {
-      return USER_DETAIL;
     }
+
+    return USER_DETAIL;
   },
   userEditProfile: USER_EDIT_PROFILE,
   userChangePassword: USER_CHANGE_PASSWORD,
@@ -40,11 +41,21 @@ const routes = {
   videoDetail: (id) => {
     if (id) {
       return `${VIDEOS}/${id}`;
-    } else {
-      return VIDEO_DETAIL;
     }
+    return VIDEO_DETAIL;
   },
-  videoDelete: VIDEO_DELETE,
+  videoEdit: (id) => {
+    if (id) {
+      return `${VIDEOS}/${id}/edit`;
+    }
+    return VIDEO_EDIT;
+  },
+  videoDelete: (id) => {
+    if (id) {
+      return `${VIDEOS}/${id}/delete`;
+    }
+    return VIDEO_DELETE;
+  },
 };
 
 export default routes;

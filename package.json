@@ -4,12 +4,13 @@
   "description": "Cloning Youtube with Vanilla and NodeJS",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js --delay 3.5",
-    "start": "node build/init.js",
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 3.5",
+    "dev": "npm run dev:server",
     "build:server": "babel src --out-dir build --ignore '.scss' --ignore 'static'",
     "copyAll": "mkdir -p build/logs && touch build/logs/access.log && cp -R src/uploads build && cp -R src/views build",
+    "prebuild": "rm -rf build",
     "build": "npm run build:server && npm run copyAll",
-    "prebuild": "rm -rf build"
+    "start": "node build/init.js"
   },
   "author": "solarsdev",
   "license": "ISC",
@@ -32,6 +33,9 @@
     "@babel/node": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "core-js": "^3.9.1",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "nodemon": "^2.0.7"
   }
 }

@@ -1,4 +1,9 @@
 extends layouts/main
 
 block content
-  p videoDetail
+  .video-container
+    video.video-container__video(src=video.fileUrl, controls, autoplay=true)
+    .video-container__title= video.title
+    .video-container__views= video.views
+    .video-container__description= video.description
+    a(href=routes.videoEdit(video.id)) Edit

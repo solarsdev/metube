@@ -1,1 +1,9 @@
-p videoEdit
+extends layouts/main
+
+block content
+  .video-edit
+    form.video-edit__form(action=routes.videoEdit(video.id), method="post") 
+      input.video-edit__title(type="text", name="title", value=video.title)
+      textarea.video-edit__description(name="description", cols="30", rows="10")= video.description
+      input(type="submit", value="保存")
+    a(href=routes.videoDelete(video.id)) 削除
