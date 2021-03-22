@@ -7,19 +7,26 @@ const ENTRY_FILE = path.resolve(__dirname, 'assets', 'js', 'main.js');
 const OUTPUT_DIR = path.join(__dirname, 'static');
 
 const config = {
+  devtool: 'cheap-module-source-map',
   entry: ENTRY_FILE,
   mode: MODE,
   module: {
     rules: [
       {
-        test: /\.(scss)$/,
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-          },
+          MiniCssExtractPlugin.loader,
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -28,9 +35,7 @@ const config = {
               },
             },
           },
-          {
-            loader: 'sass-loader',
-          },
+          'sass-loader',
         ],
       },
     ],
@@ -39,13 +44,7 @@ const config = {
     path: OUTPUT_DIR,
     filename: '[name].js',
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: '[name].css',
-    }),
-  ],
+  plugins: [new MiniCssExtractPlugin()],
 };
 
 module.exports = config;
