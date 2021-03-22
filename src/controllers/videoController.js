@@ -4,7 +4,7 @@ import Video from '../models/Video';
 export const home = async (req, res) => {
   let videos = [];
   try {
-    videos = await Video.find({});
+    videos = await Video.find({}).sort({ _id: -1 });
   } catch (error) {
     console.error(error);
   }
@@ -18,7 +18,8 @@ export const search = (req, res) => {
   res.render('search', { pageTitle: 'Seach', searchingBy });
 };
 
-export const getVideoUpload = (req, res) => res.render('videoUpload', { pageTitle: 'Video Upload' });
+export const getVideoUpload = (req, res) =>
+  res.render('videoUpload', { pageTitle: 'Video Upload' });
 
 export const postVideoUpload = async (req, res) => {
   const {

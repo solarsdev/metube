@@ -194,3 +194,6 @@ uploads/
 !.elasticbeanstalk/*.global.yml
 
 .eslintrc.js
+.eslintrc.json
+
+.prettierrc
