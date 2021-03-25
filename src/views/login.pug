@@ -9,13 +9,13 @@ block content
         .social-login__header 
           span 外部サービスでログイン
         .social-login__btn.social-login__btn--facebook
-          i.fab.fa-facebook
+          i.fab.fa-facebook.social-login__btn-icon
           span.social-login__desc.social-login__desc--facebook Facebookでログイン
         .social-login__btn.social-login__btn--twitter
-          i.fab.fa-twitter
+          i.fab.fa-twitter.social-login__btn-icon
           span.social-login__desc.social-login__desc--twitter Twitterでログイン
         .social-login__btn.social-login__btn--google
-          i.fab.fa-google
+          img.social-login__btn-icon(src="/static/images/logo-icon-google.svg")
           span.social-login__desc.social-login__desc--google Googleでログイン
         .social-login__footer 
           span ログイン以外の目的に使われることはありません。
@@ -24,14 +24,15 @@ block content
         .email-login__header
           span メールアドレスでログイン
         form.email-login__form(action=routes.login, method="post")
-          input.email-login__email(type="email", name="email", placeholder="メールアドレス")
-          input.email-login__password(type="password", name="password", placeholder="パスワード")
+          input.email-login__input.email-login__email(type="email", name="email", placeholder="メールアドレス", required=true)
+          input.email-login__input.email-login__password(type="password", name="password", placeholder="パスワード", required=true)
           .email-login__logged-on
-            input.email-login__logged-on#email-login__logged-on(type="checkbox", name="loggedOn")
-            label(for="email-login__logged-on") ログインしたままにする
-          input.email-login__submit(type="submit", value="ログイン")
-        .email-login__forgot
+            input.email-login__logged-on-checkbox#email-login__logged-on-checkbox(type="checkbox", name="loggedOn")
+            label.email-login__logged-on-text(for="email-login__logged-on-checkbox") ログインしたままにする
+          button.email-login__submit(type="submit") ログイン
+        a.email-login__forgot(href="asd")
           span パスワードを忘れた方はこちら
-    .login__footer 
-      span まだアカウントをお持ちではない方はこちら
-      i.fas.fa-chevron-right
+    a.login__footer(href=routes.join)
+      span まだアカウントをお持ちではない方は
+      span.login__footer-link こちら
+      i.fas.fa-chevron-right.login__footer-icon

@@ -195,3 +195,4 @@ uploads/
 .eslintrc.js
 .eslintrc.json
 .prettierrc
+static/

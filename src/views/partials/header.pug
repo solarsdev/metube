@@ -1,21 +1,32 @@
 header.header 
-  .header__column 
-    a(href=routes.home) 
-      i.fab.fa-youtube
-  .header__column 
-    form(action=routes.search, method="get") 
-      input(type="text", name="search_query", placeholder="検索")
-  .header__column 
-    ul 
-      if !user.isAuthenticated
-        li 
-          a(href=routes.join) Join 
-        li 
-          a(href=routes.login) Login
-      else
-        li 
-          a(href=`${routes.videos}${routes.videoUpload}`) Upload
-        li 
-          a(href=routes.userDetail(user.id)) Profile
-        li 
-          a(href=routes.logout) Logout 
+  .header__column
+    .header__menu 
+      i.fas.fa-bars.header__menu-icon
+    .header__logo
+      a.header__logo-link(href=routes.home) 
+        i.fab.fa-youtube.header__logo-icon
+        span.header__logo-text MeTube
+        span.header__logo-country-code JP
+  .header__column.header__column-search
+    form.header__form#header__form(action=routes.search, method="get") 
+      input.header__search(type="text", name="search_query", placeholder="検索")
+      button.header__submit(type="submit")
+        i.fas.fa-search
+  .header__column.header__column-login
+    if !user.isAuthenticated
+      a.header__beginner(href=routes.login)
+        img.header__beginner-icon(src="/static/images/beginner.svg")
+        span.header__beginner-text 初めての方へ
+      a.header__login(href=routes.login)
+        i.fas.fa-sign-in-alt.header__login-icon
+        span.header__login-text ログイン
+      a.header__join(href=routes.join)
+        i.fas.fa-user-plus.header__join-icon
+        span.header__join-text 新規登録
+    else
+      li 
+        a(href=`${routes.videos}${routes.videoUpload}`) Upload
+      li 
+        a(href=routes.userDetail(user.id)) Profile
+      li 
+        a(href=routes.logout) Logout 
