@@ -3,7 +3,9 @@ extends layouts/main
 block content 
   .login
     .login__header
-      h1 ログイン
+      h1
+        i.fas.fa-sign-in-alt.login__header-icon
+        span.login__header-text ログイン
     .login__main 
       .login__social.social-login
         .social-login__header 
@@ -25,7 +27,7 @@ block content
           span メールアドレスでログイン
         form.email-login__form(action=routes.login, method="post")
           input.email-login__input.email-login__email(type="email", name="email", placeholder="メールアドレス", required=true)
-          input.email-login__input.email-login__password(type="password", name="password", placeholder="パスワード", required=true)
+          input.email-login__input.email-login__password(type="password", name="password", placeholder="パスワード", required=true, minlength=8)
           .email-login__logged-on
             input.email-login__logged-on-checkbox#email-login__logged-on-checkbox(type="checkbox", name="loggedOn")
             label.email-login__logged-on-text(for="email-login__logged-on-checkbox") ログインしたままにする
