@@ -1,6 +1,6 @@
 @mixin btnEffect($colorMain, $colorEffect) {
   background-position: center;
-  transition: background 0.5s;
+  transition: background 0.3s;
 
   &:hover {
     background: $colorMain radial-gradient(circle, transparent 1%, $colorMain 1%) center/15000%;

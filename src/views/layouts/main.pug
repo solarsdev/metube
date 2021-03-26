@@ -10,7 +10,8 @@ html(lang="en")
     title #{pageTitle} | #{siteName}
   body 
     include ../partials/header
-    main 
+    include ../partials/guide
+    main.main
       block content 
     include ../partials/footer
     script(src="/static/main.js") 

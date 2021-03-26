@@ -1,0 +1,74 @@
+.guide {
+  width: 240px;
+  height: 100%;
+  background-color: white;
+  position: fixed;
+
+  &__menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 45px;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 16px;
+
+    &--current {
+      color: red;
+      background-color: rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    &:hover:not(&--current) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &__icon {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    margin-right: 16px;
+  }
+
+  &__text {
+    color: $black;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 1312px) {
+  .guide {
+    width: 77px;
+    &__menu {
+      grid-auto-rows: 60px;
+    }
+    &__item {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 792px) {
+  .guide {
+    visibility: hidden;
+
+    &__item {
+      flex-direction: column;
+    }
+  }
+}

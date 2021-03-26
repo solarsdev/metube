@@ -1,13 +1,13 @@
 import routes from '../routes';
 
-export const getJoin = (req, res) => res.render('join', { pageTitle: 'Join' });
+export const getJoin = (req, res) => res.render('join', { pageTitle: '新規登録' });
 export const postJoin = (req, res) => {
   const {
     body: { lastName, firstName, email, password, passwordConfirm },
   } = req;
 
   if (password !== passwordConfirm) {
-    res.status(400).render('join', { pageTitle: 'Join' });
+    res.status(400).render('join', { pageTitle: '新規登録' });
   } else {
     // ToDo: Register User
     // ToDo: Login User
@@ -15,7 +15,7 @@ export const postJoin = (req, res) => {
   }
 };
 
-export const getLogin = (req, res) => res.render('login', { pageTitle: 'Login' });
+export const getLogin = (req, res) => res.render('login', { pageTitle: 'ログイン' });
 
 export const postLogin = (req, res) => {
   const {

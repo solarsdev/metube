@@ -1,8 +1,11 @@
 @import './config/reset.scss';
 @import './config/_variables.scss';
 
+/* Partials */
+@import './partials/guide.scss';
 @import './partials/header.scss';
 
+/* Pages */
 @import './pages/login.scss';
 @import './pages/join.scss';
 
@@ -16,4 +19,29 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
+}
+
+.main {
+  position: fixed;
+  left: 240px;
+  width: calc(100% - 240px);
+  height: 100%;
+}
+
+@media screen and (max-width: 1312px) {
+  .main {
+    position: fixed;
+    left: 77px;
+    width: calc(100% - 77px);
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 792px) {
+  .main {
+    position: fixed;
+    left: 0px;
+    width: calc(100% - 0px);
+    height: 100%;
+  }
 }
