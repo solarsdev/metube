@@ -1,7 +1,8 @@
 import routes from '../routes';
+import User from '../models/User';
 
 export const getJoin = (req, res) => res.render('join', { pageTitle: '新規登録' });
-export const postJoin = (req, res) => {
+export const postJoin = async (req, res) => {
   const {
     body: { lastName, firstName, email, password, passwordConfirm },
   } = req;
@@ -9,7 +10,17 @@ export const postJoin = (req, res) => {
   if (password !== passwordConfirm) {
     res.status(400).render('join', { pageTitle: '新規登録' });
   } else {
-    // ToDo: Register User
+    try {
+      const user = User({
+        email,
+        password,
+        lastName,
+        firstName,
+      });
+      await User.register(user, password);
+    } catch (error) {
+      console.log(error);
+    }
     // ToDo: Login User
     res.redirect(routes.home);
   }
