@@ -8,7 +8,7 @@ export const home = async (req, res) => {
   } catch (error) {
     console.error(error);
   }
-  res.render('home', { pageTitle: 'Home', videos });
+  res.render('home', { pageTitle: 'ホーム', videos });
 };
 
 export const search = async (req, res) => {
@@ -50,7 +50,7 @@ export const videoDetail = async (req, res) => {
   try {
     video = await Video.findById(id);
   } catch (error) {}
-  res.render('videoDetail', { pageTitle: 'Video Detail', video });
+  res.render('videoDetail', { pageTitle: video.title, video });
 };
 
 export const getVideoEdit = async (req, res) => {

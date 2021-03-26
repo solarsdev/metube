@@ -1,13 +1,17 @@
 @import './config/reset.scss';
 @import './config/_variables.scss';
 
+/* Mixins */
+@import './mixins/videoBlock.scss';
+
 /* Partials */
 @import './partials/guide.scss';
 @import './partials/header.scss';
 
 /* Pages */
-@import './pages/login.scss';
+@import './pages/home.scss';
 @import './pages/join.scss';
+@import './pages/login.scss';
 
 html,
 body {
