@@ -1,18 +1,20 @@
 import '@babel/polyfill';
 import fs from 'fs';
 import path from 'path';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
 import moment from 'moment-timezone';
 import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
-import localsMiddleware from './middlewares';
+import passport from 'passport';
 
+import localsMiddleware from './middlewares';
 import routes from './routes';
 import globalRouter from './routers/globalRouter';
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
+import './passport';
 
 morgan.token('date', (req, res, tz) => moment().tz(tz).format());
 morgan.format(
@@ -35,6 +37,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 app.use(cookieParser()); // get cookie info
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(localsMiddleware);
 
 app.set('view engine', 'pug');
