@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import helmet from 'helmet';
 import moment from 'moment-timezone';
+import MongoStore from 'connect-mongo';
 import morgan from 'morgan';
 import passport from 'passport';
 import session from 'express-session';
@@ -45,6 +46,9 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URL,
+    }),
   }),
 );
 app.use(passport.initialize());
