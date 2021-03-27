@@ -13,7 +13,7 @@ header.header
       button.header__submit(type="submit")
         i.fas.fa-search
   .header__column.header__column-login
-    if !user
+    if !loggedUser
       a.header__beginner(href=routes.login)
         img.header__beginner-icon(src="/static/images/beginner.svg")
         span.header__beginner-text 初めての方へ
@@ -27,6 +27,22 @@ header.header
       li 
         a(href=`${routes.videos}${routes.videoUpload}`) Upload
       li 
-        a(href=routes.userDetail(user.id)) Profile
-      li 
-        a(href=routes.logout) Logout 
+        a(href=routes.userDetail(loggedUser.id)) Profile
+      img.header__avatar(src=loggedUser.avatarUrl)
+      .user-menu.user-menu--hide
+        .user-menu__profile
+          img.user-menu__avatar(src=loggedUser.avatarUrl)
+          .user-menu__names
+            span.user-menu__name=`${loggedUser.lastName ? loggedUser.lastName : ''} ${loggedUser.firstName ? loggedUser.firstName : ''}`
+            span.user-menu__email=loggedUser.email
+        .user-menu__controls
+          .user-menu__item
+            img.user-menu__icon--image(src="/static/images/beginner.svg")
+            span.user-menu__text 初めての方へ
+          .user-menu__item
+            i.fas.fa-cog.user-menu__icon
+            span.user-menu__text 設定
+          a.user-menu__item(href=routes.logout)
+            i.fas.fa-sign-out-alt.user-menu__icon
+            span.user-menu__text ログアウト
+

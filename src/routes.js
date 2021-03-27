@@ -10,6 +10,8 @@ const USERS = '/users';
 const USER_DETAIL = '/:id';
 const USER_EDIT_PROFILE = '/edit-profile';
 const USER_CHANGE_PASSWORD = '/change-password';
+const GOOGLE_LOGIN = '/auth/google';
+const GOOGLE_LOGIN_CALLBACK = '/auth/google/callback';
 
 // Video Router
 const VIDEOS = '/videos';
@@ -35,6 +37,9 @@ const routes = {
   },
   userEditProfile: USER_EDIT_PROFILE,
   userChangePassword: USER_CHANGE_PASSWORD,
+
+  googleLogin: GOOGLE_LOGIN,
+  googleLoginCallback: GOOGLE_LOGIN_CALLBACK,
 
   videos: VIDEOS,
   videoUpload: VIDEO_UPLOAD,
