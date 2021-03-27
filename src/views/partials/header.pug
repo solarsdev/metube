@@ -13,7 +13,7 @@ header.header
       button.header__submit(type="submit")
         i.fas.fa-search
   .header__column.header__column-login
-    if !user.isAuthenticated
+    if !user
       a.header__beginner(href=routes.login)
         img.header__beginner-icon(src="/static/images/beginner.svg")
         span.header__beginner-text 初めての方へ

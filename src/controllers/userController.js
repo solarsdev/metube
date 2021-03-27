@@ -19,20 +19,20 @@ export const postJoin = async (req, res, next) => {
         firstName,
       });
       await User.register(user, password);
+      next();
     } catch (error) {
       console.log(error);
+      res.redirect(routes.home);
     }
-    next();
   }
 };
 
 export const getLogin = (req, res) => res.render('login', { pageTitle: 'ログイン' });
 
-export const postLogin = (req, res) =>
-  passport.authenticate('local', {
-    successRedirect: routes.home,
-    failureRedirect: routes.login,
-  });
+export const postLogin = passport.authenticate('local', {
+  successRedirect: routes.home,
+  failureRedirect: routes.login,
+});
 
 export const logout = (req, res) => {
   // ToDo: Logout user
